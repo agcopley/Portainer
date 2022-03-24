@@ -1,0 +1,18 @@
+version: "3"
+services:
+  portainer:
+    image: portainer/portainer-ce
+    ports:
+      - "4002:9000"
+      - "4003:8000"
+    networks:
+      - portainer_net
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+networks:
+  portainer_net:
+    driver: bridge
+
+volumes:
+  portainer_data:
